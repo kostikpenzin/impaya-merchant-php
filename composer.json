@@ -1,0 +1,23 @@
+{
+    "name": "kostikpenzin/impaya-merchant-php",
+    "description": "Library for impaya.ru merchant API",
+    "type": "library",
+    "keywords": ["php", "extension", "library", "impaya", "impaya.ru", "merchant", "payment", "pay"],
+    "homepage": "https://github.com/kostikpenzin/impaya-merchant-php",
+    "license": "MIT",
+    "authors": [{
+        "name": "Konstantin Penzin",
+        "email": "penzin85@gmail.com"
+    }],
+    "require": {
+        "php": ">=7.1",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "kostikpenzin\\impaya\\": ""
+        }
+    }
+}
