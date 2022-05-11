@@ -44,7 +44,7 @@ class ImpayaMerchant
     {
         switch ($name) {
             case 'response':
-                return htmlentities($this->response);
+                return $this->response;
             default:
                 if ($this->response) {
                     if ($json = json_decode($this->response, true)) {
@@ -93,8 +93,8 @@ class ImpayaMerchant
                 $args['credential']['terminal_password'] = $this->secretKey;
             }
         }
-        $url = $this->_combineUrl($url, $path);
 
+        $url = $this->_combineUrl($url, $path);
 
         return $this->_sendRequest($url, $args);
     }
@@ -110,7 +110,7 @@ class ImpayaMerchant
         $url = '';
         foreach ($args as $arg) {
             if (is_string($arg)) {
-                if ($arg[strlen($arg) - 1] !== '/') $arg .= '/';
+                //if ($arg[strlen($arg) - 1] !== '/') $arg .= '/';
                 $url .= $arg;
             } else {
                 continue;
