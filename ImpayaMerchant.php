@@ -86,11 +86,11 @@ class ImpayaMerchant
     {
         $url = $this->api_url;
         if (is_array($args)) {
-            if (!array_key_exists('TerminalKey', $args)) {
-                $args['TerminalKey'] = $this->terminalKey;
+            if (!array_key_exists('key', $args)) {
+                $args['key'] = $this->terminalKey;
             }
-            if (!array_key_exists('Token', $args)) {
-                $args['Token'] = $this->secretKey;
+            if (!array_key_exists('terminal_password', $args)) {
+                $args['credential']['terminal_password'] = $this->secretKey;
             }
         }
         $url = $this->_combineUrl($url, $path);
