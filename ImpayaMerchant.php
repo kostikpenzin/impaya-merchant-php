@@ -26,9 +26,9 @@ class ImpayaMerchant
      * @param  bool $dev
      * @return void
      */
-    public function __construct(string $terminalKey, string $secretKey, bool $dev=false)
+    public function __construct(string $terminalKey, string $secretKey, bool $dev = false)
     {
-        $this->api_url = ($dev==false) ? 'https://api.impaya.ru/' : 'https://api-stage.impaya.ru/';
+        $this->api_url = ($dev == false) ? 'https://api.impaya.ru/' : 'https://api-stage.impaya.ru/';
         $this->dev = $dev;
         $this->terminalKey = $terminalKey;
         $this->secretKey = $secretKey;
@@ -71,6 +71,117 @@ class ImpayaMerchant
         return $this->buildQuery('session', $args);
     }
 
+    /**
+     * onestep
+     *
+     * @param  mixed $args
+     * @return void
+     */
+    public function onestep($args)
+    {
+        return $this->buildQuery('onestep', $args);
+    }
+
+
+    /**
+     * authorize
+     *
+     * @param  mixed $args
+     * @return void
+     */
+    public function authorize($args)
+    {
+        return $this->buildQuery('authorize', $args);
+    }
+
+
+    /**
+     * authorize3ds
+     *
+     * @param  mixed $args
+     * @return void
+     */
+    public function authorize3ds($args)
+    {
+        return $this->buildQuery('authorize3ds', $args);
+    }
+
+    /**
+     * confirm
+     *
+     * @param  mixed $args
+     * @return void
+     */
+    public function confirm($args)
+    {
+        return $this->buildQuery('confirm', $args);
+    }
+
+    /**
+     * void
+     *
+     * @param  mixed $args
+     * @return void
+     */
+    public function void($args)
+    {
+        return $this->buildQuery('void', $args);
+    }
+
+    /**
+     * refund
+     *
+     * @param  mixed $args
+     * @return void
+     */
+    public function refund($args)
+    {
+        return $this->buildQuery('refund', $args);
+    }
+
+    /**
+     * status
+     *
+     * @param  mixed $args
+     * @return void
+     */
+    public function status($args)
+    {
+        return $this->buildQuery('status', $args);
+    }
+
+    /**
+     * card
+     *
+     * @param  mixed $args
+     * @return void
+     */
+    public function card($args)
+    {
+        return $this->buildQuery('card', $args);
+    }
+
+    /**
+     * user
+     *
+     * @param  mixed $args
+     * @return void
+     */
+    public function user($args)
+    {
+        return $this->buildQuery('user', $args);
+    }
+
+    /**
+     * cards
+     *
+     * @param  mixed $args
+     * @return void
+     */
+    public function cards($args)
+    {
+        return $this->buildQuery('cards', $args);
+    }
 
     /**
      * Builds a query string and call sendRequest method.
