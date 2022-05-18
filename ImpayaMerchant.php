@@ -9,6 +9,7 @@ class ImpayaMerchant
 {
     private $api_url;
     private $terminalKey;
+    private $terminalName;
     private $secretKey;
     private $dev;
     private $paymentId;
@@ -23,15 +24,17 @@ class ImpayaMerchant
      *
      * @param  string $terminalKey
      * @param  string $secretKey
+     * @param  string $terminalName
      * @param  bool $dev
      * @return void
      */
-    public function __construct(string $terminalKey, string $secretKey, bool $dev = false)
+    public function __construct(string $terminalKey, string $secretKey, string $terminalName='',  bool $dev = false)
     {
         $this->api_url = ($dev == false) ? 'https://api.impaya.ru/' : 'https://api-stage.impaya.ru/';
         $this->dev = $dev;
         $this->terminalKey = $terminalKey;
         $this->secretKey = $secretKey;
+        $this->terminalName = $terminalName;
     }
 
     /**
@@ -79,7 +82,8 @@ class ImpayaMerchant
      */
     public function onestep($args)
     {
-        return $this->buildQuery('order/onestep', $args);
+        //return $this->buildQuery('order/onestep', $args);
+        return $this->buildQuery('pay', $args);
     }
 
 
@@ -197,12 +201,17 @@ class ImpayaMerchant
     {
         $url = $this->api_url;
         if (is_array($args)) {
-            if (!array_key_exists('key', $args)) {
+            //if (!array_key_exists('key', $args)) {
                 $args['key'] = $this->terminalKey;
-            }
-            if (!array_key_exists('terminal_password', $args)) {
+            //}
+            //if (!array_key_exists('terminal_password', $args)) {
+                $args['credential']['merchant_password'] = $this->terminalKey;
                 $args['credential']['terminal_password'] = $this->secretKey;
+            //}
+            if (!$this->terminalName!='') {
+                $args['credential']['merchant_name'] = $this->terminalName;
             }
+            
         }
 
         $url = $this->_combineUrl($url, $path);
