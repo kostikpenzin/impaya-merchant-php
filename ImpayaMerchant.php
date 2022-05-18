@@ -79,7 +79,7 @@ class ImpayaMerchant
      */
     public function onestep($args)
     {
-        return $this->buildQuery('onestep', $args);
+        return $this->buildQuery('order/onestep', $args);
     }
 
 
@@ -91,7 +91,7 @@ class ImpayaMerchant
      */
     public function authorize($args)
     {
-        return $this->buildQuery('authorize', $args);
+        return $this->buildQuery('order/authorize', $args);
     }
 
 
@@ -103,7 +103,7 @@ class ImpayaMerchant
      */
     public function authorize3ds($args)
     {
-        return $this->buildQuery('authorize3ds', $args);
+        return $this->buildQuery('order/authorize3ds', $args);
     }
 
     /**
@@ -114,7 +114,7 @@ class ImpayaMerchant
      */
     public function confirm($args)
     {
-        return $this->buildQuery('confirm', $args);
+        return $this->buildQuery('order/confirm', $args);
     }
 
     /**
@@ -125,7 +125,7 @@ class ImpayaMerchant
      */
     public function void($args)
     {
-        return $this->buildQuery('void', $args);
+        return $this->buildQuery('order/void', $args);
     }
 
     /**
@@ -136,7 +136,7 @@ class ImpayaMerchant
      */
     public function refund($args)
     {
-        return $this->buildQuery('refund', $args);
+        return $this->buildQuery('order/refund', $args);
     }
 
     /**
